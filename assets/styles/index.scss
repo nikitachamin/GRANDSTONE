@@ -1,0 +1,18 @@
+@use 'header';
+@use 'fonts';
+
+html {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+
+}
+body{
+    font-family: "Golos Text";
+    margin: 0px;
+    padding: 0px;
+}
+
+.app{
+    margin: 0 15rem;
+}
