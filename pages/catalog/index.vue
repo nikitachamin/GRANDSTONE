@@ -93,12 +93,14 @@ const data = [
 
     <section class="catalog-section">
         <div class="header">
+            <!-- TODO: создать общий глобальный компонент хлебных крошек, который принимает массив элементов. -->
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
                 <NuxtLink class="bread-crum _active" to="/catalog">Каталог</NuxtLink>
             </div>
             <h3>Каталог</h3>
         </div>
+        <!-- TODO: создать отдельный компонент. -->
         <div class="hero">
             <img class="hero__img" src="/assets/img/catalog/hero.png" alt="Надгробная плита" />
             <div class="hero-text-wrapper">
@@ -111,6 +113,7 @@ const data = [
         </div>
        
         <div class="catalog">
+            <!-- TODO: создать отдельный компонент, который также выводить через `v-for`. -->
             <div class="catalog-lists" v-for="(list, index) in data" :key="list.category_name" :class="{ '_black': index % 2 !== 0 }">
                 <div class="category-list__name">
                     <h2>{{ list.category_name }}</h2>
@@ -127,8 +130,10 @@ const data = [
 </template>
 
 <style lang="scss" scoped>
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
 
+/** TODO: перевести на `@apply`. */
 
 .catalog-section {
     @apply max-w-360;

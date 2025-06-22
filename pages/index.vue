@@ -7,7 +7,7 @@ import img2 from '@/assets/img/tombs/offers/2.png';
 import img3 from '@/assets/img/tombs/offers/3.png';
 import FormMail from '~/components/form/FormMail.vue';
 
-
+/** Некорректный вариант: */
 
 const cards = [
     {
@@ -41,12 +41,40 @@ const cards = [
 function selectCardsGroup(groupName : string) {
    return cards.find(group => group.h3 === groupName);
 }
+
+/** Корректный вариант: */
+
+const cardsData = {
+    'best-offers': [
+        { img: img1, title: "Granite Complex", price: 12000, id: 1 },
+        { img: img1, title: "Granite Complex", price: 12000, id: 2 },
+        { img: img1, title: "Granite Complex", price: 12000, id: 3 },
+        { img: img1, title: "Granite Complex", price: 12000, id: 4 }
+    ],
+    'available-options': [
+        { img: img2, title: "Granite Complex", price: 12000, id: 5 },
+        { img: img2, title: "Granite Complex", price: 12000, id: 6 },
+        { img: img2, title: "Granite Complex", price: 12000, id: 7 },
+        { img: img2, title: "Granite Complex", price: 12000, id: 8 }
+    ],
+    'customer-choice': [
+        { img: img3, title: "Granite Complex", price: 12000, id: 9 },
+        { img: img3, title: "Granite Complex", price: 12000, id: 10 },
+        { img: img3, title: "Granite Complex", price: 12000, id: 11 },
+        { img: img3, title: "Granite Complex", price: 12000, id: 12 }
+    ]
+};
+
+/** Достаточно передать значение в шаблоне, не создавая лишнюю переменную. */
+
+console.log(cardsData['best-offers']);
 </script>
 
 <template>
   <div>
      <div class="main-page">
     <hero-section-slider> </hero-section-slider>
+    <!-- TODO: отказаться от использования метода `selectCardsGroup` с методом `find` внутри. -->
     <special-offer :card-group="selectCardsGroup('Лучшие предложения')"></special-offer>
     <special-offer :card-group="selectCardsGroup('Доступные варианты')"></special-offer>
     <Hero />

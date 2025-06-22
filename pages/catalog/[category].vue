@@ -66,6 +66,7 @@ const currentCards = computed(() => {
 
    <section class="category-section">
         <div class="header">
+            <!-- TODO: создать общий глобальный компонент хлебных крошек, который принимает массив элементов. -->
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
                 <NuxtLink class="bread-crum" to="/catalog">Каталог</NuxtLink> /
@@ -74,6 +75,7 @@ const currentCards = computed(() => {
             <h3>{{breadCrumbLabel}}</h3>
         </div>
          <div class="offers">
+                <!-- TODO: создать отдельный компонент, который также выводить через `v-for`. -->
                 <div class="offer-card" v-for="card in currentCards" :key="card.id">
                     <img :src="card.img" :alt="card.title">
                     <div class="card-info">
@@ -92,6 +94,7 @@ const currentCards = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
 
 .category-section {
@@ -104,6 +107,7 @@ const currentCards = computed(() => {
 
 }
 
+/** TODO: перевести на `@apply`. */
 .bread-crum {
     color: var(--Black-Color-600, #5D5D5D);
     font-family: "Golos Text";

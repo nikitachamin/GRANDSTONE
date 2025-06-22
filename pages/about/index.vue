@@ -7,6 +7,7 @@ import img1 from '@/assets/img/about/about.png';
 
     <section class="about-section">
         <div class="header">
+            <!-- TODO: создать общий глобальный компонент хлебных крошек, который принимает массив элементов. -->
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
                 <NuxtLink class="bread-crum _active" to="/about">О компании</NuxtLink>
@@ -33,8 +34,10 @@ import img1 from '@/assets/img/about/about.png';
 
 
 <style lang="scss" scoped>
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
 
+/** TODO: перевести на `@apply`. */
 
 .about-section {
     @apply max-w-360;

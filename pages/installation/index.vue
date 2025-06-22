@@ -1,5 +1,7 @@
 <script setup>
 import img1 from '@/assets/img/installation/installation.png';
+
+/** TODO: исправить нейминги классов, `installation-lvls` - слишком абстрактно и не понятно. */
 </script>
 
 
@@ -7,6 +9,7 @@ import img1 from '@/assets/img/installation/installation.png';
 
     <section class="installation-section">
         <div class="header">
+            <!-- TODO: создать общий глобальный компонент хлебных крошек, который принимает массив элементов. -->
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
                 <NuxtLink class="bread-crum _active" to="/installation">Установка</NuxtLink>
@@ -21,6 +24,7 @@ import img1 from '@/assets/img/installation/installation.png';
                 <h3>Процесс установки</h3>
             </div>
             <div class="installation-lvls">
+                <!-- TODO: создать отдельный компонент, который также выводить через `v-for`. -->
                 <div class="installation-lvl">
                     <div class="installation-lvl__heading">
                     <div class=installation-lvl__number> <p>1</p></div>
@@ -97,8 +101,10 @@ import img1 from '@/assets/img/installation/installation.png';
 
 
 <style lang="scss" scoped>
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
 
+/** TODO: перевести на `@apply`. */
 
 .installation-section {
     @apply max-w-360;

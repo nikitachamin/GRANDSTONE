@@ -16,6 +16,7 @@ function toggleTheText(index){
 
     <section class="question-section">
         <div class="header">
+            <!-- TODO: создать общий глобальный компонент хлебных крошек, который принимает массив элементов. -->
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
                 <NuxtLink class="bread-crum _active" to="/faq">Вопросы и ответы</NuxtLink>
@@ -30,6 +31,7 @@ function toggleTheText(index){
                 <h2 class="question-content__title">Часто задаваемые вопросы</h2>
             </div>
             <div class="questions">
+                <!-- TODO: создать отдельный компонент, который также выводить через `v-for`. -->
                 <div class="question">
                     <div class="question__heading">
                         <h4>Что делать, если вы столкнулись с организацией похорон?</h4>
@@ -46,6 +48,7 @@ function toggleTheText(index){
                   <div class="question">
                     <div class="question__heading">
                         <h4>Как правильно оформить документы для похорон?</h4>
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <button class="btn" @click="toggleTheText(1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none">
                                 <path
@@ -59,6 +62,7 @@ function toggleTheText(index){
                   <div class="question">
                     <div class="question__heading">
                         <h4>Если возникли сложности с выбором ритуальных услуг?</h4>
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <button class="btn" @click="toggleTheText(2)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none">
                                 <path
@@ -72,6 +76,7 @@ function toggleTheText(index){
                   <div class="question">
                     <div class="question__heading">
                         <h4>Если у вас возникли вопросы по поводу цен на ритуальные услуги?</h4>
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <button class="btn" @click="toggleTheText(3)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none">
                                 <path
@@ -85,6 +90,7 @@ function toggleTheText(index){
                   <div class="question">
                     <div class="question__heading">
                         <h4>Если вы хотите изменить дату или время проведения ритуала?</h4>
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <button class="btn" @click="toggleTheText(4)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none">
                                 <path
@@ -98,6 +104,7 @@ function toggleTheText(index){
                   <div class="question">
                     <div class="question__heading">
                         <h4>Как поступить, если вам нужна помощь в организации поминок?</h4>
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <button class="btn" @click="toggleTheText(5)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none">
                                 <path
@@ -106,6 +113,7 @@ function toggleTheText(index){
                             </svg>
                     </button>
                     </div>
+                <!-- TODO: удалить -->
                 <p v-show="isVisible[5]" class="question__text">Привет</p>
                 </div>
 
@@ -117,12 +125,15 @@ function toggleTheText(index){
 
 
 <style lang="scss" scoped>
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
 
 * {
     padding: 0;
     margin: 0;
 }
+
+/** TODO: перевести на `@apply`. */
 
 .question-section {
     @apply max-w-360;

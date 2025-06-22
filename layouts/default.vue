@@ -23,7 +23,12 @@ import {FormMail} from '../components/form/';
 </template>
 
 <style scoped>
+/** TODO: использовать `lang="scss"` */
+
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
+
+/** TODO: перевести на `@apply`. */
 
 .heading_wrapper{
     @apply bg-[#F9F9F9];

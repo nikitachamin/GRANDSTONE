@@ -1,5 +1,7 @@
 <script setup>
 import img1 from '@/assets/img/delivery/delivery.png';
+
+/** TODO: исправить нейминги классов, `delivery-lvl` - слишком абстрактно и не понятно. */
 </script>
 
 
@@ -7,6 +9,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
 
     <section class="delivery-section">
         <div class="header">
+            <!-- TODO: создать общий глобальный компонент хлебных крошек, который принимает массив элементов. -->
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
                 <NuxtLink class="bread-crum _active" to="/delivery">Доставка</NuxtLink>
@@ -23,6 +26,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
             <div class="delivery-lvls">
                 <div class="delivery-lvl">
                     <div class="delivery-lvl__heading">
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <div class=delivery-lvl__number> <span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <path
@@ -45,6 +49,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
                 </div>
                 <div class="delivery-lvl">
                     <div class="delivery-lvl__heading">
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <div class=delivery-lvl__number> <span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <path
@@ -73,6 +78,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
                 </div>
                 <div class="delivery-lvl">
                     <div class="delivery-lvl__heading">
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <div class=delivery-lvl__number> <span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <path
@@ -95,6 +101,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
                 </div>
                 <div class="delivery-lvl">
                     <div class="delivery-lvl__heading">
+                        <!-- TODO: отказаться от использования SVG напрямую, использовать библиотеку. -->
                         <div class=delivery-lvl__number> <span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <path
@@ -119,6 +126,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
             </div>
 
         </div>
+        <!-- TODO: создать отдельный компонент. -->
         <div class="delivery-content">
             <div class="title-block">
                 <h2 class="delivery-content__title">Аккуратная транспортировка с гарантией целостности</h2>
@@ -142,6 +150,7 @@ import img1 from '@/assets/img/delivery/delivery.png';
 
 
 <style lang="scss" scoped>
+/** TODO: проверить необходимость использования `@reference`. */
 @reference "tailwindcss";
 
 * {
