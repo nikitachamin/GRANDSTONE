@@ -82,8 +82,9 @@ import {HeroButton} from '@/components/buttons';
     }
    }
 
-   @media (max-width: 1024px) {
+   @media (max-width: 480px) {
     .hero{
+        @apply w-120;
         @apply px-8;
     }
     .hero__title{

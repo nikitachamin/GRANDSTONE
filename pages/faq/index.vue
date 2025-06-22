@@ -18,7 +18,7 @@ function toggleTheText(index){
         <div class="header">
             <div class="bread-crumps">
                 <NuxtLink class="bread-crum" to="/">Главная</NuxtLink> /
-                <NuxtLink class="bread-crum _active" to="/question">Вопросы и ответы</NuxtLink>
+                <NuxtLink class="bread-crum _active" to="/faq">Вопросы и ответы</NuxtLink>
             </div>
         </div>
         <div class="hero">

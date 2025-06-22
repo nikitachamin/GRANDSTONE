@@ -3,7 +3,7 @@ import img1 from '@/assets/img/tombs/offers/1.png';
 import img2 from '@/assets/img/tombs/offers/2.png';
 import img3 from '@/assets/img/tombs/offers/3.png';
 const route = useRoute();
-const categoryName = route.params.category; // Значение из URL (например: "electronics")
+const categoryName = route.params.category; 
 
 const cards = 
     {

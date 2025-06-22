@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-
+  ssr: true, // Включите SSR для SSG (обязательно!)
+     nitro: {
+       prerender: {
+         crawlLinks: true, // Автоматический предрендеринг всех ссылок
+         routes: ['/about', '/catalog', '/catalog/straight', '/catalog/comb', '/installation', '/faq', '/delivery'], // Ручное указание маршрутов
+       }
+     },
   css: [
     '@/assets/styles/index.scss',
     'swiper/css',
@@ -17,8 +23,16 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/image'],
+  modules: ['@nuxt/image','@nuxt/icon'],
 
+  icon: {
+    customCollections: [
+      {
+        prefix: 'icons',
+        dir: 'assets/icons'
+      },
+    ],
+  },
  
 }
 )

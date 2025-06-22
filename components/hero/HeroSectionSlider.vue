@@ -219,12 +219,13 @@ h1 {
     }
 @media (max-width: 480px){
     .hero-container{    
-     @apply max-w-120;
+     @apply w-104;
      @apply px-8;
     }
     
     .hero-section-carousel-item__image {
         width: 416px;
+        @apply min-w-104;
         height: 250px;
     }   
     .button{
@@ -242,6 +243,10 @@ h1 {
         top: 0px;
         background: linear-gradient(90deg, rgba(0, 0, 0, 0.40) 39.61%, rgba(217, 217, 217, 0.00) 114.46%, rgba(217, 217, 217, 0.00) 120.83%);
       
+    }
+    .hero-block{
+        @apply w-104;
+       
     }
     .title h1{
           font-size: 24px;

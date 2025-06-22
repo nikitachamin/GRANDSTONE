@@ -182,13 +182,16 @@ const swiperOptions = {
 
 @media (max-width: 480px){
     .hero-container{    
-     @apply max-w-120;
+     @apply w-104;
      @apply px-8;
      @apply mx-0;
     }
     .heading__text{
      @apply w-104;
      
+    }
+    .hero-section-carousel-item__image{
+        @apply w-104;
     }
 }
 </style>

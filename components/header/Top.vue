@@ -22,16 +22,16 @@ const menu = [
 
     {
         title: 'Гарантии',
-        to: '/гарантии',
+        to: '/',
     },
 
     {
         title: 'Оплата',
-        to: '/payment',
+        to: '/',
     },
     {
         title: 'Помощь',
-        to: '/help',
+        to: '/',
     },
 ]
 
@@ -53,11 +53,11 @@ const second_menu = [
 
     {
         title: 'Новости',
-        to: '/news',
+        to: '/',
     },
     {
         title: 'Контакты',
-        to: '/contacts',
+        to: '/',
     },
 ]
 
@@ -462,6 +462,16 @@ function toggleMenu() {
         @apply flex-col;
         @apply gap-4;
     }
-  
+     .menu-buttons {
+        @apply mr-30;
+    }
+    .menu{
+        right: 30px;
+
+    }
+     .burger-menu{
+        @apply max-w-104;
+        left: -30px;
+     }
 }
 </style>

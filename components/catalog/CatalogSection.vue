@@ -13,42 +13,42 @@ const catalog = [
     {
     title: 'Памятники горизонтальные',
     imgSrc: horizontal,
-    to: '/horizontal',
+    to: '/',
     id: 'horizontal' },
      {
     title: 'Памятники вертикальные',
     imgSrc: straight,
-    to: '/straight',
+    to: '/catalog/straight',
     id: 'straight' },
      {
     title: 'Комбинированные',
     imgSrc: comb,
-    to: '/comb',
+    to: '/catalog/comb',
     id: 'comb' },
      {
     title: 'Двойные памятники',
     imgSrc: comb_horizontal,
-    to: '/comb_horizontal',
+    to: '/',
     id: 'comb_horizontal' },
      {
     title: 'Мемориальные комплексы',
     imgSrc: complex,
-    to: '/complex',
+    to: '/',
     id: 'complex' },
      {
     title: 'Надгробные плиты',
     imgSrc: tombstone,
-    to: '/tombstone',
+    to: '/',
     id: 'tombstone' },
      {
     title: 'Цоколя и ограды',
     imgSrc: fences,
-    to: '/fences',
+    to: '/',
     id: 'fences' },
      {
     title: 'Лавочки и скамейки',
     imgSrc: bench,
-    to: '/bench',
+    to: '/',
     id: 'bench' },
 ]
 </script>

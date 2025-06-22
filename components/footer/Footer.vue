@@ -27,11 +27,11 @@ const navigation = [
 
     {
         title: 'Новости',
-        to: '/news',
+        to: '/',
     },
     {
         title: 'Контакты',
-        to: '/contacts',
+        to: '/',
     },
 ]
 const catalog = [
@@ -42,7 +42,7 @@ const catalog = [
 
     {
         title: 'Цоколя',
-        to: '/landing',
+        to: '/',
     },
 
     {
@@ -52,15 +52,15 @@ const catalog = [
 
     {
         title: 'Надгробные плиты',
-        to: '/news',
+        to: '/',
     },
     {
         title: 'Мемориальные комплексы',
-        to: '/contacts',
+        to: '/',
     },
      {
         title: 'Лавочки и скамейки',
-        to: '/contacts',
+        to: '/',
     },
 ]
 const help = [
@@ -81,11 +81,11 @@ const help = [
 
     {
         title: 'Оплата',
-        to: '/news',
+        to: '/',
     },
     {
         title: 'Помощи',
-        to: '/contacts',
+        to: '/',
     },
 ]
 const contacts = [
@@ -96,7 +96,7 @@ const contacts = [
 
     {
         title: 'Телефон',
-        to: '/landing',
+        to: '/',
     },
 
     {

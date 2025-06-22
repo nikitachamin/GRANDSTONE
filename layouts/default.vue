@@ -29,7 +29,7 @@ import {FormMail} from '../components/form/';
     @apply bg-[#F9F9F9];
     @apply w-full;
     @apply box-border;
-    @apply px-8;
+    
 }
 .black-form{
  @apply py-28;
@@ -40,11 +40,24 @@ import {FormMail} from '../components/form/';
 @media (max-width: 1024px) {
   .heading_wrapper{
     @apply bg-[#F9F9F9];
-    @apply px-8;
+  
+  } 
+  .black-form{
+    
+    @apply py-0;  
+  }
+}
+@media (max-width: 480px) {
+  .heading_wrapper{
+    @apply bg-[#F9F9F9];
+    @apply flex;
+    @apply justify-center;
+    @apply w-120;
   } 
   .black-form{
     
     @apply py-0;  
 }
+
 }
 </style>

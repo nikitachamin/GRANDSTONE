@@ -164,9 +164,19 @@ defineProps({
      @apply px-8;
      @apply mx-0;
     }
+    .offer-card{
+     @apply w-104;
+  
+    }
     .offer-card img {
      @apply h-80;
-     @apply w-104;
+     @apply max-w-104;
+    
+    }
+    .heading{
+        @apply w-104;
+        @apply flex;
+        @apply justify-between;
     }
 }
 }

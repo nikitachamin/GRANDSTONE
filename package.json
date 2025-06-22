@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.14.0",
+    "@nuxt/image": "^1.10.0",
     "@tailwindcss/postcss": "^4.1.8",
     "@tailwindcss/vite": "^4.1.8",
     "nuxt": "^3.17.4",
@@ -19,8 +21,7 @@
     "swiper": "^11.2.8",
     "tailwindcss": "^4.1.8",
     "vue": "^3.5.15",
-    "vue-router": "^4.5.1",
-    "@nuxt/image": "^1.10.0"
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "sass-embedded": "^1.89.1"
