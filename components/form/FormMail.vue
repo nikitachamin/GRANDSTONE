@@ -20,9 +20,26 @@ const { handleSubmit, errors } = useForm({
   validationSchema: schema,
 });
 
-const onSubmit = handleSubmit((values) => {
-  console.log('Отправка данных:', values);
-  // Здесь ваша логика отправки (API-вызов и т.д.)
+const onSubmit = handleSubmit(async(values) => {
+  try {
+    const res = await fetch('/.netlify/functions/send-telegram', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        fullName: values.fullName,
+        phone: values.phone,
+        email: values.email
+      })
+    });
+    const data = await res.json();
+    if(data.status === 'ok') {
+      alert('Заявка отправлена!');
+    } else {
+      alert('Ошибка: ' + (data.error || 'Неизвестная ошибка'));
+    }
+  } catch (e) {
+    alert('Ошибка при отправке: ' + e.message);
+  }
 });
 
     const { value: fullName } = useField('fullName')
