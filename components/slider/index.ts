@@ -1,3 +1,1 @@
-export {
-  default as SliderSection,
-} from './SliderSection.vue'
+export { default as SliderSection } from './SliderSection.vue';

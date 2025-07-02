@@ -1,3 +1,1 @@
-export {
-  default as FormMail,
-} from './FormMail.vue'
+export { default as FormMail } from './FormMail.vue';

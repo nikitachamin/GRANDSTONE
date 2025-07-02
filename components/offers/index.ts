@@ -1,3 +1,1 @@
-export {
-  default as SpecialOffer,
-} from './SpecialOffer.vue'
+export { default as SpecialOffer } from './SpecialOffer.vue';
