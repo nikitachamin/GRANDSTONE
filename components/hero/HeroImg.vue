@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const pathToImg = route.path.replace(/^\//, '').toLowerCase();
-const imgSrc = `/img/${pathToImg}/${pathToImg}.png`;
+const imgSrc = `/img/${pathToImg}/${pathToImg}.webp`;
 
 interface HeroAlt {
   alt: string;

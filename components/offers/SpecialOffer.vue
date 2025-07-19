@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Card from '../card/Card.vue';
 
 defineProps({
   cardGroup: {
@@ -9,6 +10,13 @@ defineProps({
     },
   },
 });
+const openWhatsApp = () => {
+  const phone = '79854270852';
+  const message = encodeURIComponent('Здравствуйте! У меня вопрос');
+  const url = `https://wa.me/${phone}?text=${message}`;
+
+  window.open(url, '_blank');
+};
 </script>
 <template>
   <div>
@@ -18,7 +26,7 @@ defineProps({
           <h3>{{ cardGroup.h3 }}</h3>
         </div>
         <div>
-          <NuxtLink to="/catalog"
+          <NuxtLink to="/katalog"
             >Смотреть все
             <span>
               <svg
@@ -36,7 +44,12 @@ defineProps({
         </div>
       </div>
       <div class="offers">
-         <Card :CardData="cardGroup.data" />
+        <Card
+          v-for="card in cardGroup.data"
+          :key="card.article"
+          :cardData="card"
+          :src="card.img"
+        />
       </div>
     </section>
   </div>
@@ -94,7 +107,70 @@ defineProps({
   @apply flex-wrap;
   @apply gap-6;
 }
+.card {
+  @apply flex;
+  @apply flex-col;
+  @apply gap-4;
+  position: relative;
+}
 
+.stretched-link {
+  @apply cursor-pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.card img {
+  @apply h-87;
+  @apply w-85.5;
+  background-color: #f6f6f6;
+}
+
+.card-info {
+  @apply flex;
+  @apply flex-col;
+  @apply gap-4.5;
+  @apply p-4;
+}
+
+.card-info h3 {
+  color: #000;
+  font-family: 'Golos Text';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2rem;
+  /* 160% */
+  letter-spacing: -0.00325rem;
+}
+
+.card-info p {
+  color: #000;
+  font-family: 'Golos Text';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.75rem;
+  /* 175% */
+  letter-spacing: 0.00588rem;
+}
+
+.card-info button {
+  display: flex;
+  height: 3.25rem;
+  padding: 0.75rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  align-self: stretch;
+  border-radius: 0.25rem;
+  @apply w-full;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  @apply bg-[#FFF];
+}
 .offer-card img {
   @apply h-87;
   @apply w-85.5;
@@ -163,6 +239,17 @@ defineProps({
 
     background-color: #f6f6f6;
   }
+
+  .card {
+    @apply w-[calc(50vw-50px)];
+    @apply box-border;
+  }
+  .card img {
+    @apply h-87;
+    @apply w-full;
+
+    background-color: #f6f6f6;
+  }
   @media (max-width: 480px) {
     .special-offer {
       @apply w-full;
@@ -180,6 +267,13 @@ defineProps({
       @apply min-w-full;
       @apply flex;
       @apply justify-between;
+    }
+    .card {
+      @apply w-full;
+    }
+    .card img {
+      @apply max-h-80;
+      @apply max-w-104;
     }
   }
 }

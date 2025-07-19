@@ -1,9 +1,5 @@
 <script setup lang="ts">
 
-import heroImg1 from '@/assets/img/hero/1.png';
-import heroImg2 from '@/assets/img/hero/2.png';
-import heroImg3 from '@/assets/img/hero/3.png';
-import heroImg4 from '@/assets/img/hero/4.png';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
@@ -15,27 +11,27 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 
 const HERO_DATA = [
   {
-    img: '/img/hero/slider/1.png',
+    img: '/img/hero/slider/1.webp',
     title: `Памятники
 и мемориальные комплексы всех видов`,
   },
-   {
-    img: '/img/hero/slider/2.png',
+  {
+    img: '/img/hero/slider/2.webp',
     title: `Авторская гравировка по индивидуальному заказу`,
   },
-   {
-    img: '/img/hero/slider/3.png',
+  {
+    img: '/img/hero/slider/3.webp',
     title: `Память, которую невозможно забыть`,
   },
-   {
-    img: '/img/hero/slider/4.png',
+  {
+    img: '/img/hero/slider/4.webp',
     title: `Опыт мастеров — залог качества на долгие годы`,
   },
-   {
-    img: '/img/hero/slider/5.png',
+  {
+    img: '/img/hero/slider/5.webp',
     title: `Изготовление памятников 
 с гравировкой по фото`,
-  }
+  },
 ];
 
 const swiperOptions = {
@@ -45,11 +41,11 @@ const swiperOptions = {
     prevEl: '.swiper-button-prev',
   },
   loop: true,
-   autoplay: {
+  autoplay: {
     delay: 4000,
-    disableOnInteraction: false, 
-    pauseOnMouseEnter: true
-  }
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
 };
 </script>
 
@@ -57,18 +53,21 @@ const swiperOptions = {
   <div class="hero-container">
     <div class="hero-section-carousel">
       <Swiper v-bind="swiperOptions">
-       
         <SwiperSlide
           v-for="(item, index) in HERO_DATA"
           :key="index"
           class="hero-section-carousel-item"
         >
-          <NuxtImg :src="item.img" :alt="item.title" class="hero-section-carousel-item__image" />
-           <div class="title">
+          <NuxtImg
+            :src="item.img"
+            :alt="item.title"
+            class="hero-section-carousel-item__image"
+          />
+          <div class="title">
             <div class="title-wrapper">
-              <h1>{{item.title}}</h1>
+              <h1>{{ item.title }}</h1>
+            </div>
           </div>
-        </div>
         </SwiperSlide>
       </Swiper>
       <button class="button swiper-button-prev">
@@ -107,24 +106,25 @@ const swiperOptions = {
       <div
         class="hero-block"
         :style="{
-          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(${heroImg1})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(/img/hero/1.webp)`,
         }"
       >
-        <h3 class="block-title">Бесплатная консультация и&nbspрасчёт стоимости</h3>
+        <h3 class="block-title">
+          Бесплатная консультация и&nbspрасчёт стоимости
+        </h3>
       </div>
       <div
         class="hero-block"
         :style="{
-          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(${heroImg2})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(/img/hero/2.webp)`,
         }"
       >
-        <h3 class="block-title">Бесплатная
-установка</h3>
+        <h3 class="block-title">Бесплатная установка</h3>
       </div>
       <div
         class="hero-block"
         :style="{
-          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(${heroImg3})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(/img/hero/3.webp)`,
         }"
       >
         <h3 class="block-title">Наличие собственного производства</h3>
@@ -132,11 +132,10 @@ const swiperOptions = {
       <div
         class="hero-block"
         :style="{
-          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(${heroImg4})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%), url(/img/hero/4.webp)`,
         }"
       >
-        <h3 class="block-title">Услуга
-доставки</h3>
+        <h3 class="block-title">Услуга доставки</h3>
       </div>
     </div>
   </div>
@@ -152,24 +151,27 @@ const swiperOptions = {
   position: relative;
   @apply flex;
   @apply mt-10;
-
 }
 
 .hero-section-carousel-item {
-  
   @apply w-full;
   @apply h-87.5;
   @apply object-cover;
   z-index: 1;
   overflow: visible;
+  background-size: 100%;
 }
 
 .hero-section-carousel-item__image {
   @apply p-0;
   @apply w-full;
   @apply h-full;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 100%), url(<path-to-image>) lightgray -16.764px -165px / 106.389% 196.41% no-repeat, #F6F6F6;
-  @apply object-cover;
+  object-fit: cover;
+  background-size: 100%;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
+    lightgray 50% / cover no-repeat,
+    #f6f6f6;
 }
 
 .title {
@@ -182,11 +184,14 @@ const swiperOptions = {
   top: 0;
   left: 0;
   z-index: 10;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.40) 68.64%, rgba(217, 217, 217, 0.00) 105.52%, rgba(217, 217, 217, 0.00) 111.44%);
-  
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.4) 68.64%,
+    rgba(217, 217, 217, 0) 105.52%,
+    rgba(217, 217, 217, 0) 111.44%
+  );
 }
-.title-wrapper{
-
+.title-wrapper {
 }
 
 h1 {

@@ -38,7 +38,7 @@ a {
   @apply h-75;
   @apply w-full;
   border-radius: 4px;
-  background:  #F0F0F0;
+  background: #f0f0f0;
 }
 
 @media (max-width: 1024px) {

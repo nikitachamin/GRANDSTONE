@@ -13,22 +13,22 @@ const emits = defineEmits<Emits>();
 const menu = [
   {
     title: 'Вопросы и ответы',
-    to: '/FAQ',
+    to: '/voprosi-i-otveti',
   },
 
   {
     title: 'Доставка',
-    to: '/delivery',
+    to: '/dostavka',
   },
 
   {
     title: 'Гарантии',
-    to: '/guarantee',
+    to: '/garantii',
   },
 
   {
     title: 'Оплата',
-    to: '/payment',
+    to: '/oplata',
   },
 ];
 const route = useRoute();
@@ -45,7 +45,7 @@ function isActiveItem(value: string) {
     <div class="heading__info">
       <p>{{ COMPANY_ADDRESS }}</p>
       <div class="tel_num">
-          <a href="tel:+74952265171">{{ COMPANY_PHONE }}</a>
+        <a href="tel:+74952265171">{{ COMPANY_PHONE }}</a>
       </div>
     </div>
 

@@ -5,9 +5,9 @@ import { HeroButton } from '@/components/buttons';
 <template>
   <section class="hero">
     <div class="hero__title">
-      <h2>
+      <h1>
         Изготовим и установим памятник с уважением к памяти близкого человека
-      </h2>
+      </h1>
     </div>
     <div>
       <HeroButton />
@@ -39,7 +39,7 @@ import { HeroButton } from '@/components/buttons';
   @apply w-167.75;
   z-index: 10;
 }
-.hero__title h2 {
+.hero__title h1 {
   color: #000;
   font-family: 'Golos Text';
   font-size: 1.75rem;
@@ -59,7 +59,7 @@ import { HeroButton } from '@/components/buttons';
   aspect-ratio: 347.08/397.18;
   right: 7.02013rem;
   bottom: -5.63213rem;
-  background: url('@/assets/img/hero/flower.png') #f6f6f6 -290.026px -259.07px /
+  background: url('/img/hero/flower.webp') #f6f6f6 -290.026px -259.07px /
     251.874% 330.111% no-repeat;
   z-index: 9;
 }

@@ -1,5 +1,17 @@
+<script setup>
+const openWhatsApp = () => {
+  const phone = '79854270852'; // Номер в международном формате (без +)
+  const message = encodeURIComponent('Здравствуйте! У меня вопрос'); // Опциональное сообщение
+  const url = `https://wa.me/${phone}?text=${message}`;
+
+  window.open(url, '_blank'); // Открыть в новой вкладке
+};
+</script>
+
 <template>
-  <button class="app-btn -black">Рассчитать стоимость</button>
+  <button class="app-btn -black" @click="openWhatsApp">
+    Рассчитать стоимость
+  </button>
 </template>
 
 <style scope>

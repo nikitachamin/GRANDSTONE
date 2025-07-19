@@ -1,21 +1,21 @@
 <template>
- 
   <yandex-map
-      v-model="map"
-      :settings="{
-        location: {
-          center: [37.518892, 55.807577],
-          zoom: 15,
-        },
-      }"
-      width="100%"
-      height="500px"
+    v-model="map"
+    :settings="{
+      location: {
+        center: [37.518892, 55.807577],
+        zoom: 15,
+      },
+    }"
+    width="100%"
+    height="500px"
   >
-    <yandex-map-default-scheme-layer/>
-    <yandex-map-default-features-layer/>
-    <yandex-map-default-marker :settings="{ coordinates: [37.518892, 55.807577] }"/>
+    <yandex-map-default-scheme-layer />
+    <yandex-map-default-features-layer />
+    <yandex-map-default-marker
+      :settings="{ coordinates: [37.518892, 55.807577] }"
+    />
   </yandex-map>
-
 </template>
 
 <script setup lang="ts">

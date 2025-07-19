@@ -1,23 +1,31 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  ssr: true, // Включите SSR для SSG (обязательно!)
+  ssr: true, 
   nitro: {
     prerender: {
-      crawlLinks: true, // Автоматический предрендеринг всех ссылок
+      crawlLinks: true, 
       routes: [
-        '/about',
-        '/catalog',
-        '/catalog/straight',
-        '/catalog/comb',
-        '/installation',
-        '/FAQ',
-        '/delivery',
-        '/payment',
-        '/guarantee',
-        '/contacts',
-      ], // Ручное указание маршрутов
+        '/o-kompanii',
+        '/katalog',
+        '/katalog/pamyatniki',
+        '/katalog/pamyatniki-kombinirovannie',
+        '/katalog/kompleksi',
+        '/katalog/pamyatniki-figurnie',
+        '/katalog/pamyatniki-gorizontalnie',
+        '/katalog/pamyatniki-kombinirovannie-gorizontalnie',
+        '/katalog/skameiki',
+        '/katalog/ogradi',
+        '/katalog/tcokolya',
+        '/katalog/nadgrobnie-pliti',
+        '/ustanovka',
+        '/voprosi-i-otveti',
+        '/dostavka',
+        '/oplata',
+        '/garantii',
+        '/kontakti',
+      ], 
     },
   },
   css: [
@@ -34,11 +42,11 @@ export default defineNuxtConfig({
     },
   },
 
-
-  modules: ['@nuxt/image', '@nuxt/icon', 'vue-yandex-maps/nuxt'],
-    yandexMaps: {
+  modules: ['@nuxt/image', '@nuxt/icon', 'vue-yandex-maps/nuxt',  '@nuxtjs/seo',    ],
+  yandexMaps: {
     apikey: '1e3650af-24a6-465b-9289-24d5aee887bc',
   },
+   site: { url: 'https://grandstone-memorial.ru/' } ,
 
   icon: {
     customCollections: [

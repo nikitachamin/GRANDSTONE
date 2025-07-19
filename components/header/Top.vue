@@ -2,22 +2,22 @@
 import { HeroButton } from '@/components/buttons';
 import { WhatsAp, Telegram } from '@/components/buttons';
 
-import { useScrollLock } from '@vueuse/core'
-import { ref, onMounted } from 'vue'
+import { useScrollLock } from '@vueuse/core';
+import { ref, onMounted, inject } from 'vue';
 
-const isLocked = ref(false)
-let lockScroll = ref(null)
+const isLocked = ref(false);
+let lockScroll = ref(null);
 
 onMounted(() => {
   // Инициализация только на клиенте
-  lockScroll = useScrollLock(document.body)
-  lockScroll.value = isLocked.value
-})
+  lockScroll = useScrollLock(document.body);
+  lockScroll.value = isLocked.value;
+});
 
 const toggleLock = () => {
-  isLocked.value = !isLocked.value
-  if (lockScroll) lockScroll.value = isLocked.value
-}
+  isLocked.value = !isLocked.value;
+  if (lockScroll) lockScroll.value = isLocked.value;
+};
 
 interface Emits {
   (e: 'route:change-page'): void;
@@ -31,57 +31,47 @@ const emits = defineEmits<Emits>();
 const menu = [
   {
     title: 'Вопросы и ответы',
-    to: '/FAQ',
+    to: '/voprosi-i-otveti',
   },
 
   {
     title: 'Доставка',
-    to: '/delivery',
+    to: '/dostavka',
   },
 
   {
     title: 'Гарантии',
-    to: '/',
+    to: '/garantii',
   },
 
   {
     title: 'Оплата',
-    to: '/',
+    to: '/oplata',
   },
-  {
-    title: 'Помощь',
-    to: '/',
-  },
+ 
 ];
 
 const second_menu = [
   {
     title: 'Каталог',
-    to: '/catalog',
+    to: '/katalog',
   },
 
   {
     title: 'Установка',
-    to: '/installation',
+    to: '/ustanovka',
   },
 
   {
     title: 'О компании',
-    to: '/about',
+    to: '/o-kompanii',
   },
 
-  {
-    title: 'Новости',
-    to: '/',
-  },
   {
     title: 'Контакты',
-    to: '/contacts',
+    to: '/kontakti',
   },
 ];
-
-
-
 
 const route = useRoute();
 
@@ -94,22 +84,26 @@ const isMenuOpen = ref(false);
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;
-   toggleLock(); 
- 
+  toggleLock();
 }
 
-
-
+const scrollToForm = inject<() => void>('scrollToForm');
+function handleScrollToForm() {
+  scrollToForm?.();
+  if (isMenuOpen.value) {
+    toggleMenu();
+  }
+}
 </script>
 
 <template>
   <div class="app-header">
-    <div class="bottom container" >
-      <div class="name" >
+    <div class="bottom container">
+      <div class="name">
         <Icon v-if="isMainPage" name="icons:logo-head" class="logo" />
-        <NuxtLink v-else to="/" @click="isMainPage">
+        <NuxtLink v-else to="/" @click="isMainPage" aria-label="Логотип">
           <Icon name="icons:logo-head" class="logo" />
-        </NuxtLink>    
+        </NuxtLink>
       </div>
 
       <div class="bottom-menu__list">
@@ -125,13 +119,13 @@ function toggleMenu() {
         </NuxtLink>
       </div>
       <div class="menu-buttons">
-        <WhatsAp :buttonClass="'icon-msg'"/>
-        <Telegram :buttonClass="'icon-msg'"/>
+        <WhatsAp :buttonClass="'icon-msg'" />
+        <Telegram :buttonClass="'icon-msg'" />
         <HeroButton class="_hide" />
-        <button class="btn">Заказать звонок</button>
-        <button class="mobile-btn">
-           <Icon name="icons:phone" size="24" />
-        </button>
+        <button class="btn" @click="handleScrollToForm">Заказать звонок</button>
+        <a class="mobile-btn" href="tel:+74952265171">
+          <Icon name="icons:phone" size="24" />
+        </a>
         <div
           class="menu btn2"
           :class="{ open: isMenuOpen }"
@@ -141,36 +135,40 @@ function toggleMenu() {
           <div class="icon"></div>
         </div>
       </div>
-  
     </div>
-        <div v-if="isMenuOpen" class="burger-menu" v-scroll-lock="isLocked" >
-        <div class="burger-menu__list">
-          <h2>Меню</h2>
-          <NuxtLink
-            v-for="(item, index) in second_menu"
-            :key="index"
-            :to="item.to"
-            :class="[isActiveItem(item.to) && '_active']"
-            class="burger-menu__item"
-            @click="emits('route:change-page')"
-          >
-            {{ item.title }}
-          </NuxtLink>
-        </div>
+    <div v-if="isMenuOpen" class="burger-menu" v-scroll-lock="isLocked">
+      <div class="burger-menu__list">
+        <h2>Меню</h2>
+        <NuxtLink
+          v-for="(item, index) in second_menu"
+          :key="index"
+          :to="item.to"
+          :class="[isActiveItem(item.to) && '_active']"
+          class="burger-menu__item"
+          @click="
+            emits('route:change-page');
+            toggleMenu();
+          "
+        >
+          {{ item.title }}
+        </NuxtLink>
+      </div>
 
-        <div>
-          <h2>Наши мессенджеры</h2>
-          <div class="burger-buttons">
-             <WhatsAp :buttonClass="'mobile-icon-msg'"/>
-             <Telegram :buttonClass="'mobile-icon-msg'"/>
-          </div>
-        </div>
-        <div class="burger-btn-container">
-          <HeroButton class="app-btn_mobile" />
-          <button class="btn burger-btn">Заказать звонок</button>
+      <div>
+        <h2>Наши мессенджеры</h2>
+        <div class="burger-buttons">
+          <WhatsAp :buttonClass="'mobile-icon-msg'" />
+          <Telegram :buttonClass="'mobile-icon-msg'" />
         </div>
       </div>
-      <div v-if="isMenuOpen" class="overlay"></div>
+      <div class="burger-btn-container">
+        <HeroButton class="app-btn_mobile" />
+        <button class="btn burger-btn" @click="handleScrollToForm">
+          Заказать звонок
+        </button>
+      </div>
+    </div>
+    <div v-if="isMenuOpen" class="overlay"></div>
 
     <slot />
   </div>
@@ -239,6 +237,8 @@ function toggleMenu() {
   @apply items-center;
   @apply rounded-sm;
   @apply cursor-pointer;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mobile-btn {

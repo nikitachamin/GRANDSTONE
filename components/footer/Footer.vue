@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 import { WhatsAp, Telegram } from '@/components/buttons';
 interface Emits {
   (e: 'route:change-page'): void;
@@ -13,96 +12,88 @@ const emits = defineEmits<Emits>();
 const navigation = [
   {
     title: 'Каталог',
-    to: '/catalog',
+    to: '/katalog',
   },
 
   {
     title: 'Установка',
-    to: '/installation',
+    to: '/ustanovka',
   },
 
   {
     title: 'О компании',
-    to: '/about',
+    to: '/o-kompanii',
   },
 
   {
-    title: 'Новости',
-    to: '/',
-  },
-  {
     title: 'Контакты',
-    to: '/',
+    to: '/kontakti',
   },
 ];
-const catalog = [
+const katalog = [
   {
     title: 'Памятники',
-    to: '/catalog',
+    to: '/katalog',
   },
 
   {
     title: 'Цоколя',
-    to: '/',
+    to: '/katalog/tcokolya',
   },
 
   {
     title: 'Ограды',
-    to: '/about',
+    to: '/katalog/ogradi',
   },
 
   {
     title: 'Надгробные плиты',
-    to: '/',
+    to: '/katalog/nadgrobnie-pliti',
   },
   {
     title: 'Мемориальные комплексы',
-    to: '/',
+    to: '/katalog/kompleksi',
   },
   {
     title: 'Лавочки и скамейки',
-    to: '/',
+    to: '/katalog/skameiki',
   },
 ];
 const help = [
   {
     title: 'Вопросы и ответы',
-    to: '/catalog',
+    to: '/voprosi-i-otveti',
   },
 
   {
     title: 'Доставка',
-    to: '/delivery',
+    to: '/dostavka',
   },
 
   {
     title: 'Гарантия',
-    to: '/about',
+    to: '/o-kompanii',
   },
 
   {
     title: 'Оплата',
-    to: '/',
-  },
-  {
-    title: 'Помощи',
-    to: '/',
+    to: '/oplata',
   },
 ];
 const contacts = [
   {
     title: 'Почта',
-    to: '/catalog',
+    to: '/kontakti',
   },
 
   {
     title: 'Телефон',
-    to: '/',
+    to: '/kontakti',
   },
 
   {
     title: 'Адрес',
-    to: '/about',
+    to: '/kontakti',
   },
 ];
 const route = useRoute();
@@ -114,30 +105,36 @@ const isMainPage = computed(() => route.path === '/');
 function isActiveItem(value: string) {
   return route.path.startsWith(value);
 }
+const openWhatsApp = () => {
+  const phone = '79854270852'; // Номер в международном формате (без +)
+  const message = encodeURIComponent('Здравствуйте! У меня вопрос'); // Опциональное сообщение
+  const url = `https://wa.me/${phone}?text=${message}`;
+
+  window.open(url, '_blank'); // Открыть в новой вкладке
+};
 </script>
 <template>
   <div class="footer">
     <div class="container">
       <div class="bottom">
         <div class="heading">
-           <div class="name" >
+          <div class="name">
             <Icon v-if="isMainPage" name="icons:logo-footer" class="logo" />
-            <NuxtLink v-else to="/" @click="isMainPage">
+            <NuxtLink v-else to="/" @click="isMainPage" aria-label="Логотип">
               <Icon name="icons:logo-footer" class="logo" />
-            </NuxtLink>    
+            </NuxtLink>
           </div>
           <div class="heading_text">
             <p>
-              Мы гордимся тем, что реализовали работы для клиентов из множества
-              сфер — от стартапов до крупных бизнесов и предприятий.
+              Мы всегда готовы помочь: закажите памятник на могилу — и мы обеспечим качественное изготовление и установку. Обращайтесь — расскажем обо всех деталях, поможем сохранить память о ваших близких. Ваше доверие для нас — главное!
             </p>
           </div>
         </div>
 
         <div class="menu-buttons">
-            <WhatsAp :buttonClass="'icon'" :colorful="false"/>
-            <Telegram :buttonClass="'icon'" :colorful="false"/>
-          <button class="btn">Заказать звонок</button>
+          <WhatsAp :buttonClass="'icon'" :colorful="false" />
+          <Telegram :buttonClass="'icon'" :colorful="false" />
+          <button class="btn" @click="openWhatsApp">Заказать звонок</button>
         </div>
       </div>
       <div class="line"></div>
@@ -158,7 +155,7 @@ function isActiveItem(value: string) {
         <div class="app-footer-menu__list">
           <h3>Каталог</h3>
           <NuxtLink
-            v-for="(item, index) in catalog"
+            v-for="(item, index) in katalog"
             :key="index"
             :to="item.to"
             :class="[isActiveItem(item.to) && '_active']"
@@ -257,7 +254,6 @@ function isActiveItem(value: string) {
   @apply border-black/5;
   @apply bg-[#3D3D3D];
   @apply cursor-pointer;
-  
 }
 
 .btn {

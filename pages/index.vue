@@ -1,37 +1,93 @@
 <script setup lang="ts">
 import { SpecialOffer } from '@/components/offers';
 import { Hero } from '@/components/hero';
-import img1 from '@/assets/img/tombs/offers/1.png';
-import img2 from '@/assets/img/tombs/offers/2.png';
-import img3 from '@/assets/img/tombs/offers/3.png';
-import FormMail from '~/components/form/FormMail.vue';
 
 const cards = [
   {
     h3: 'Лучшие предложения',
     data: [
-      { img: img1, title: 'Гранитный комплекс', price: 12000, id: 1 },
-      { img: img1, title: 'Гранитный комплекс', price: 12000, id: 2 },
-      { img: img1, title: 'Гранитный комплекс', price: 12000, id: 3 },
-      { img: img1, title: 'Гранитный комплекс', price: 12000, id: 4 },
+      {
+        img: `/img/katalog/pamyatniki/1.webp`,
+        price: '27900',
+        size: '100*50*5',
+        article: 'ВП-1',
+      },
+      {
+        img: `/img/katalog/pamyatniki/10.webp`,
+        price: '27900',
+        size: '100*50*5',
+        article: 'ВП-10',
+      },
+      {
+        img: `/img/katalog/pamyatniki/100(1).webp`,
+        price: '51750',
+        size: '100*50*5',
+        article: 'ВП-100(1)',
+      },
+      {
+        img: `/img/katalog/pamyatniki-figurnie/102.webp`,
+        price: '39150',
+        size: '100*50*5',
+        article: 'ВФ-102',
+      },
     ],
   },
   {
     h3: 'Доступные варианты',
     data: [
-      { img: img2, title: 'Гранитный комплекс', price: 12000, id: 5 },
-      { img: img2, title: 'Гранитный комплекс', price: 12000, id: 6 },
-      { img: img2, title: 'Гранитный комплекс', price: 12000, id: 7 },
-      { img: img2, title: 'Гранитный комплекс', price: 12000, id: 8 },
+      {
+        img: `/img/katalog/pamyatniki-figurnie/111.webp`,
+        price: '27900',
+        size: '100*50*5',
+        article: 'ВФ-111(2)',
+      },
+      {
+        img: `/img/katalog/pamyatniki-figurnie/123(2).webp`,
+        price: '51750',
+        size: '100*50*5',
+        article: 'ВФ-123(2)',
+      },
+      {
+        img: `/img/katalog/pamyatniki-gorizontalnie/11.webp`,
+        price: '36200.0',
+        size: '80*60*5',
+        article: 'гп11',
+      },
+      {
+        img: `/img/katalog/pamyatniki-gorizontalnie/12.webp`,
+        price: '33100.0',
+        size: '80*60*5',
+        article: 'гп12',
+      },
     ],
   },
   {
     h3: 'Выбор покупателей',
     data: [
-      { img: img3, title: 'Гранитный комплекс', price: 12000, id: 9 },
-      { img: img3, title: 'Гранитный комплекс', price: 12000, id: 10 },
-      { img: img3, title: 'Гранитный комплекс', price: 12000, id: 11 },
-      { img: img3, title: 'Гранитный комплекс', price: 12000, id: 12 },
+      {
+        img: `/img/katalog/pamyatniki-kombinirovannie-gorizontalnie/2.webp`,
+        price: 'от 150000.0',
+        size: '80*60*5',
+        article: 'КГ-2',
+      },
+      {
+        img: `/img/katalog/pamyatniki-kombinirovannie/1.webp`,
+        price: 'от 150000.0',
+        size: '',
+        article: 'КВ-1',
+      },
+      {
+        img: `/img/katalog/pamyatniki-kombinirovannie/115.webp`,
+        price: 'от 150000.0',
+        size: '',
+        article: 'КВ-115',
+      },
+      {
+        img: `/img/katalog/pamyatniki-kombinirovannie/130.webp`,
+        price: 'от 150000.0',
+        size: '',
+        article: 'КВ-130',
+      },
     ],
   },
 ];
@@ -42,7 +98,6 @@ function selectCardsGroup(groupName: string) {
 </script>
 
 <template>
-
   <div>
     <div class="main-page">
       <hero-section-slider> </hero-section-slider>
@@ -58,12 +113,8 @@ function selectCardsGroup(groupName: string) {
         :card-group="selectCardsGroup('Выбор покупателей')"
       ></special-offer>
       <SliderSection />
-       
-  
-     
     </div>
   </div>
-
 </template>
 
 <style lang="scss" scoped>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-
-
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
@@ -9,13 +7,11 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-
-function makeSrcArray (): string[] {
-   const arrayOfSrc: string[] = [];
+function makeSrcArray(): string[] {
+  const arrayOfSrc: string[] = [];
   for (let index = 2; index <= 24; index++) {
-    let imgSrc = `/img/slider/${index}.jpg`;
+    let imgSrc = `/img/slider/${index}.webp`;
     arrayOfSrc.push(imgSrc);
-    
   }
   return arrayOfSrc;
 }
@@ -30,10 +26,10 @@ const swiperOptions = {
     prevEl: '.swiper-button-prev',
   },
   loop: true,
-     autoplay: {
+  autoplay: {
     delay: 4000,
-    disableOnInteraction: false, 
-    pauseOnMouseEnter: true
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
   },
   breakpoints: {
     481: {
@@ -49,10 +45,10 @@ const swiperOptions = {
 <template>
   <div class="hero-container">
     <div class="heading">
-      <h2 class="heading__title">Популярные категории</h2>
+      <h2 class="heading__title">Пример наших работ</h2>
       <p class="heading__text">
         Каждое наше преимущество — это гарантия уважительного отношения к памяти
-        ваших близких и прозрачности в работе.
+        ваших близких и прозрачности в работе, что подверждает наши работы.
       </p>
     </div>
     <div class="hero-section-carousel">

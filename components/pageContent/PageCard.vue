@@ -1,33 +1,34 @@
 <script setup lang="ts">
 interface PageCard {
-    Image?: string,
-    numberOfCard?: number,
-    title: string,
-    texts: string [],
-    wide?: boolean,
-    delivery?: boolean,
+  Image?: string;
+  numberOfCard?: number;
+  title: string;
+  texts: string[];
+  wide?: boolean;
+  delivery?: boolean;
 }
 
-const props = defineProps<{cardData:PageCard}>();
+const props = defineProps<{ cardData: PageCard }>();
 const title = props.cardData.title;
 const items = props.cardData.texts;
-
-
 </script>
 
-
-
 <template>
-     <div class="page-card" :class="[{'_wide' : props.cardData.wide}, {'_half': props.cardData.delivery}]">
-          <div class="page-card__heading" :class="{'_col' : props.cardData.delivery}">
-            <div class="page-card__number"><slot/></div>
-            <h3 class="page-card__title">{{ title }}</h3>
-          </div>
-          <div class="page-card__ul">
-            <li v-for="text in items" v-html="text"></li>
-         
-          </div>
-        </div>
+  <div
+    class="page-card"
+    :class="[
+      { _wide: props.cardData.wide },
+      { _half: props.cardData.delivery },
+    ]"
+  >
+    <div class="page-card__heading" :class="{ _col: props.cardData.delivery }">
+      <div class="page-card__number"><slot /></div>
+      <h3 class="page-card__title">{{ title }}</h3>
+    </div>
+    <div class="page-card__ul">
+      <li v-for="text in items" v-html="text"></li>
+    </div>
+  </div>
 </template>
 
 <style>
@@ -52,11 +53,9 @@ const items = props.cardData.texts;
   @apply gap-3;
   @apply items-center;
 }
-._col{
-    @apply flex-col;
-    @apply items-start;
-  
-
+._col {
+  @apply flex-col;
+  @apply items-start;
 }
 .page-card__number {
   display: flex;
@@ -79,9 +78,7 @@ const items = props.cardData.texts;
   letter-spacing: 0.00738rem;
 }
 .page-card__ul {
- 
   list-style-type: none;
-
 }
 .page-card__ul li {
   color: var(--Black-Color-600, #5d5d5d);
@@ -91,7 +88,6 @@ const items = props.cardData.texts;
   font-weight: 400;
   line-height: 1.75rem; /* 175% */
   letter-spacing: -0.01rem;
-
 }
 
 ._wide {
@@ -99,16 +95,12 @@ const items = props.cardData.texts;
 }
 
 @media (max-width: 1024px) {
-
-
   .page-card {
     @apply min-w-full;
     @apply w-full;
   }
-  ._half{
-      
-     min-width: calc(50vw - 45px);
-
+  ._half {
+    min-width: calc(50vw - 45px);
   }
   ._wide {
     @apply min-w-full;

@@ -1,45 +1,50 @@
 <script setup lang="ts">
-
 interface Card {
-    img: string,
-    title: string,
-    id: number | string,
-    price: number
+  img?: string;
+  article?: string;
+  size?: string;
+  price: string;
 }
 
-const props = defineProps<{CardData : Card}>();
+const props = defineProps<{ cardData?: Card; src?: string, cardName?: string; }>();
 
-const openWhatsApp = () => {
-  const phone = '79109725858'; 
-  const message = encodeURIComponent('Здравствуйте! У меня вопрос'); 
+const openWhatsApp = (article) => {
+  const phone = '79854270852';
+  const message = encodeURIComponent(
+    `Здравствуйте! У меня вопрос по товару c артикулом: ${article}`,
+  );
   const url = `https://wa.me/${phone}?text=${message}`;
-  
-  window.open(url, '_blank'); 
+
+  window.open(url, '_blank');
 };
 </script>
 
-
 <template>
-       <div class="card" v-for="card in CardData" :key="card.id">
-          <img :src="card.img" :alt="card.title" />
-          <div class="card-info">
-            <h3>{{ card.title }}</h3>
-            <p>от {{ card.price }}</p>
-            <a @click.prevent="openWhatsApp" class="stretched-link"></a>
-            <button>Подробнее</button>
-          </div>
-        </div>
+  <div class="card">
+    <NuxtImg :src="props.src" :alt="cardData.article" />
+    <div class="card-info">
+      <h2 v-if="cardName">{{ cardName }} {{ cardData.article ? cardData.article : cardData.img }}</h2>
+      <p v-else><strong>Артикул: {{ cardData.article ? cardData.article : cardData.img }} </strong></p>
+      {{
+        cardData.price ? `от ${cardData.price} руб.` : 'Цена по согласованию'
+      }}
+      <a
+        @click.prevent="openWhatsApp(cardData?.article)"
+        class="stretched-link"
+      ></a>
+      <button>Подробнее</button>
+    </div>
+  </div>
 </template>
-
 
 <style lang="scss" scoped>
 @reference "tailwindcss";
 
-.card{ 
+.card {
   @apply flex;
   @apply flex-col;
   @apply gap-4;
-  position: relative
+  position: relative;
 }
 
 .stretched-link {
@@ -49,7 +54,7 @@ const openWhatsApp = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; 
+  z-index: 1;
 }
 .card img {
   @apply h-87;
@@ -64,15 +69,13 @@ const openWhatsApp = () => {
   @apply p-4;
 }
 
-.card-info h3 {
+.card-info h2 {
   color: #000;
-  font-family: 'Golos Text';
-  font-size: 1.25rem;
+  font-family: "Golos Text";
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 2rem;
-  /* 160% */
-  letter-spacing: -0.00325rem;
+  line-height: 32px; /* 177.778% */
 }
 
 .card-info p {
@@ -82,7 +85,6 @@ const openWhatsApp = () => {
   font-style: normal;
   font-weight: 500;
   line-height: 1.75rem;
-  /* 175% */
   letter-spacing: 0.00588rem;
 }
 
@@ -101,7 +103,6 @@ const openWhatsApp = () => {
 }
 
 @media (max-width: 1024px) {
-
   .card {
     @apply w-[calc(50vw-50px)];
     @apply box-border;
@@ -113,7 +114,6 @@ const openWhatsApp = () => {
     background-color: #f6f6f6;
   }
   @media (max-width: 480px) {
-
     .card {
       @apply w-full;
     }

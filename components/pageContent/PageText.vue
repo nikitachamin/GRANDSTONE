@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PAGE_DATA } from '../../utils/pagedata';
-import {computed} from 'vue';
+import { computed } from 'vue';
 
 const route = useRoute();
 
@@ -12,20 +12,15 @@ const { data } = useAsyncData(() => {
 
 const title = computed(() => data.value?.title ?? '');
 const items = computed(() => data.value?.items ?? []);
-
 </script>
 
 <template>
   <div class="content">
     <div class="title-block">
-      <h2 class="content__title" v-html="title">
-    
-      </h2>
+      <h2 class="content__title" v-html="title"></h2>
     </div>
     <div class="content__list">
-      <p class="content__text" v-for="text in items" v-html="text ">
-  
-      </p>
+      <div class="content__text" v-for="text in items" v-html="text"></div>
     </div>
   </div>
 </template>
@@ -66,15 +61,15 @@ const items = computed(() => data.value?.items ?? []);
   letter-spacing: -0.01rem;
   @apply max-w-177;
 }
-.contacts_list_title{ 
-    color: var(--Black-Color-950, #000);
-    font-family: "Golos Text";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 32px; /* 177.778% */
-    @apply pb-4;
-  }
+.contacts_list_title {
+  color: var(--Black-Color-950, #000);
+  font-family: 'Golos Text';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 177.778% */
+  @apply pb-4;
+}
 
 @media (max-width: 1024px) {
   .content {

@@ -1,114 +1,120 @@
 <script setup lang="ts">
-const isAgreed = ref(true);
-
 import { useForm, useField } from 'vee-validate';
-import {object, string, boolean} from 'yup';
+import { object, string, boolean } from 'yup';
+
+import { inject } from 'vue';
+const formRef = inject('formRef');
 
 // Схема валидации
 const schema = object({
   fullName: string().required('Нужно ввести Ваше имя').min(2),
   phone: string()
     .required('Введите номер телефона')
-    .matches(/^(\+7|8)?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/, 'Введите номер через +7 или 8'),
+    .matches(
+      /^(\+7|8)?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/,
+      'Введите номер через +7 или 8',
+    ),
   email: string().email('Некорректный email').required('Введите Вашу почту'),
   agreement: boolean()
     .oneOf([true], 'Вы должны согласиться с обработкой данных')
-    .required('Дайте согласие перед отправкой')
+    .required('Дайте согласие перед отправкой'),
 });
 
 const { handleSubmit, errors } = useForm({
   validationSchema: schema,
+  initialValues: {
+    agreement: true, // Галочка по умолчанию стоит
+  },
 });
 
-const onSubmit = handleSubmit(async(values) => {
+const onSubmit = handleSubmit(async (values) => {
   try {
-    const res = await fetch('/.netlify/functions/send-telegram', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        fullName: values.fullName,
-        phone: values.phone,
-        email: values.email
-      })
-    });
-    const data = await res.json();
-    if(data.status === 'ok') {
-      alert('Заявка отправлена!');
+    const response = await fetch(
+      'https://grandstone-memorial.ru/telegram.php',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      },
+    );
+    const result = await response.json();
+    if (result.status === 'ok') {
+      // Успех
+      alert('Спасибо, сообщение отправлено!');
     } else {
-      alert('Ошибка: ' + (data.error || 'Неизвестная ошибка'));
+      // Ошибка
+      alert('Произошла ошибка, попробуйте снова.');
     }
   } catch (e) {
-    alert('Ошибка при отправке: ' + e.message);
+    alert('Не удалось отправить форму.');
   }
 });
 
-    const { value: fullName } = useField('fullName')
-    const { value: phone } = useField('phone')
-    const { value: email } = useField('email')
-     const { value: agreement } = useField('agreement' )
+const { value: fullName } = useField('fullName');
+const { value: phone } = useField('phone');
+const { value: email } = useField('email');
+const { value: agreement } = useField('agreement');
 </script>
 
 <template>
   <section class="form-container">
     <div class="heading">
-      <h2 class="heading__title">Обратная связь</h2>
+      <h2 class="heading__title">Оставь контакты, мы поможем!</h2>
       <p class="heading__text">
-        Мы гордимся тем, что реализовали работы для клиентов из множества сфер —
-        от стартапов до крупных бизнесов и предприятий.
+      Остались вопросы? Оставьте свои контактные данные — мы перезвоним вам, подробно проконсультируем и поможем выбрать гранитный памятник, полностью учитывая ваши пожелания и требования.
       </p>
     </div>
-     <form @submit="onSubmit" class="form">
-    <div class="input-container">
-      <!-- Поле ФИО -->
-      <div>
-        <input 
-          v-model="fullName" 
-          type="text" 
-          placeholder="ФИО*" 
-          class="form__input"
-        />
-        <span v-if="errors.fullName" class="error">{{ errors.fullName }}</span>
+    <form @submit.prevent="onSubmit" class="form" ref="formRef">
+      <div class="input-container">
+        <!-- Поле ФИО -->
+        <div>
+          <input
+            v-model="fullName"
+            type="text"
+            placeholder="ФИО*"
+            class="form__input"
+          />
+          <span v-if="errors.fullName" class="error">{{
+            errors.fullName
+          }}</span>
+        </div>
+
+        <!-- Поле Телефон -->
+        <div>
+          <input
+            v-model="phone"
+            type="tel"
+            placeholder="Номер телефона*"
+            class="form__input"
+          />
+          <span v-if="errors.phone" class="error">{{ errors.phone }}</span>
+        </div>
+
+        <!-- Поле Email -->
+        <div>
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Электронная почта"
+            class="form__input"
+          />
+          <span v-if="errors.email" class="error">{{ errors.email }}</span>
+        </div>
       </div>
 
-      <!-- Поле Телефон -->
-      <div>
-        <input 
-          v-model="phone" 
-          type="tel" 
-          placeholder="Номер телефона*" 
-          class="form__input"
-        />
-        <span v-if="errors.phone" class="error">{{ errors.phone }}</span>
+      <!-- Чекбокс согласия -->
+      <div class="checkbox-container">
+        <input v-model="agreement" type="checkbox" id="agreement" checked />
+        <label class="form__label" for="agreement">
+          Согласен(а) с обработкой персональных данных
+        </label>
+        <span v-if="errors.agreement" class="error error-checkbox">{{
+          errors.agreement
+        }}</span>
       </div>
 
-      <!-- Поле Email -->
-      <div>
-        <input 
-          v-model="email" 
-          type="email" 
-          placeholder="Электронная почта" 
-          class="form__input"
-        />
-        <span v-if="errors.email" class="error">{{ errors.email }}</span>
-      </div>
-    </div>
-
-    <!-- Чекбокс согласия -->
-    <div class="checkbox-container">
-      <input 
-        v-model="agreement" 
-        type="checkbox" 
-        id="agreement"
-        checked
-      />
-      <label class="form__label" for="agreement">
-        Согласен(а) с обработкой персональных данных
-      </label>
-      <span v-if="errors.agreement" class="error error-checkbox">{{ errors.agreement }}</span>
-    </div>
-    
-    <button>Отправить</button>
-  </form>
+      <button>Отправить</button>
+    </form>
   </section>
 </template>
 

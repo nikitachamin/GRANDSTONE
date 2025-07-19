@@ -1,6 +1,6 @@
 @use 'header';
 @use 'fonts';
-@import "tailwindcss/preflight" layer(base);
+@import 'tailwindcss/preflight' layer(base);
 html {
   margin: 0px;
   padding: 0px;

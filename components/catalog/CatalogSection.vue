@@ -1,60 +1,53 @@
 <script setup>
-import horizontal from '@/assets/img/tombs/catalog/horizontal.png';
-import straight from '@/assets/img/tombs/catalog/straight.png';
-import comb from '@/assets/img/tombs/catalog/comb.png';
-import comb_horizontal from '@/assets/img/tombs/catalog/comb_horizontal.png';
-import complex from '@/assets/img/tombs/catalog/complex.png';
-import tombstone from '@/assets/img/tombs/catalog/tombstone.png';
-import fences from '@/assets/img/tombs/catalog/fences.png';
-import bench from '@/assets/img/tombs/catalog/bench.png';
 
-const catalog = [
+
+const katalog = [
   {
     title: 'Памятники горизонтальные',
-    imgSrc: horizontal,
-    to: '/',
+    imgSrc: '/img/katalog/horizontal.webp',
+    to: '/katalog/pamyatniki-gorizontalnie',
     id: 'horizontal',
   },
   {
     title: 'Памятники вертикальные',
-    imgSrc: straight,
-    to: '/catalog/straight',
+    imgSrc: '/img/katalog/straight.webp',
+    to: '/katalog/pamyatniki',
     id: 'straight',
   },
   {
     title: 'Комбинированные',
-    imgSrc: comb,
-    to: '/catalog/comb',
+    imgSrc: '/img/katalog/comb.webp',
+    to: '/katalog/pamyatniki-kombinirovannie',
     id: 'comb',
   },
   {
     title: 'Двойные памятники',
-    imgSrc: comb_horizontal,
-    to: '/',
+    imgSrc:'/img/katalog/comb_horizontal.webp',
+    to: '/katalog/pamyatniki-kombinirovannie-gorizontalnie',
     id: 'comb_horizontal',
   },
   {
     title: 'Мемориальные комплексы',
-    imgSrc: complex,
-    to: '/',
+    imgSrc: '/img/katalog/complex.webp',
+    to: '/katalog/kompleksi',
     id: 'complex',
   },
   {
     title: 'Надгробные плиты',
-    imgSrc: tombstone,
-    to: '/',
+    imgSrc: '/img/katalog/tombstone.webp',
+    to: '/katalog/nadgrobnie-pliti',
     id: 'tombstone',
   },
   {
     title: 'Цоколя и ограды',
-    imgSrc: fences,
-    to: '/',
+    imgSrc:'/img/katalog/fences.webp',
+    to: '/katalog/ogradi',
     id: 'fences',
   },
   {
     title: 'Лавочки и скамейки',
-    imgSrc: bench,
-    to: '/',
+    imgSrc: '/img/katalog/bench.webp',
+    to: '/katalog/skameiki',
     id: 'bench',
   },
 ];
@@ -70,7 +63,7 @@ const catalog = [
       </p>
     </div>
     <div class="card-list">
-      <CatalogCard v-for="card in catalog" :key="card.id" :card="card" />
+      <catalogCard v-for="card in katalog" :key="card.id" :card="card" />
     </div>
   </section>
 </template>

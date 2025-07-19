@@ -16,9 +16,7 @@ interface Bread {
 const route = useRoute();
 
 const breadcrumbs = computed(() => {
-  return props.useRoutePath 
-    ? generateBreads(route.path) 
-    : props.breads;
+  return props.useRoutePath ? generateBreads(route.path) : props.breads;
 });
 
 function generateBreads(path: string): Bread[] {
@@ -49,19 +47,16 @@ function generateBreads(path: string): Bread[] {
     <template v-for="(bread, index) in breadcrumbs" :key="index">
       <!-- Непоследние элементы: ссылки -->
       <NuxtLink
-         v-if="index !== breadcrumbs.length - 1"
+        v-if="index !== breadcrumbs.length - 1"
         :to="bread.to"
         class="bread-crumb"
       >
         {{ bread.title }}
       </NuxtLink>
-      <span  v-if="index !== breadcrumbs.length - 1">/</span>
+      <span v-if="index !== breadcrumbs.length - 1">/</span>
 
       <!-- Последний элемент: текст (без ссылки) -->
-      <span
-         v-if="index === breadcrumbs.length - 1"
-        class="bread-crumb _active"
-      >
+      <span v-if="index === breadcrumbs.length - 1" class="bread-crumb _active">
         {{ bread.title }}
       </span>
     </template>
@@ -70,7 +65,7 @@ function generateBreads(path: string): Bread[] {
 
 <style>
 @reference "tailwindcss";
-.bread-crumbs{
+.bread-crumbs {
   @apply flex;
   @apply flex-row;
   @apply gap-3;
@@ -79,7 +74,6 @@ function generateBreads(path: string): Bread[] {
   @apply pb-6;
 }
 .bread-crumb {
-
   color: var(--Black-Color-600, #5d5d5d);
   font-family: 'Golos Text';
   font-size: 1rem;
