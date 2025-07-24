@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Top, Heading } from '@/components/header/';
-import { Footer } from '../components/footer/';
-import { FormMail } from '../components/form/';
+import { Top, Heading } from '@/components/header';
+import { Footer } from '../components/footer';
+import { FormMail } from '../components/form';
 import { ref, provide } from 'vue';
 
 const formRef = ref<HTMLFormElement | null>(null);
@@ -25,7 +25,7 @@ provide('formRef', formRef);
     <div class="black-form">
       <FormMail />
     </div>
-    <Footer></Footer>
+    <Footer />
   </div>
 </template>
 

@@ -3,11 +3,21 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import knownPaths from '@/utils/breadcrumbs';
 
-const props = defineProps({
-  useRoutePath: { type: Boolean, default: true },
-  breads: { type: Array as () => Bread[], default: () => [] },
+/** выносить интерфейс */
+interface BreadcrumbsProps {
+  /** булеан переменные отвечают на вопрос, поэтому нейминг должен быть формата is... или has... */
+  useRoutePath: boolean;
+  /** breads => items */
+  breads: Bread[];
+}
+
+/** более современный подход */
+const props = withDefaults(defineProps<BreadcrumbsProps>(), {
+  useRoutePath: true,
+  breads: () => [],
 });
 
+/** выносить интерфейс в entity, а потом создать у фичи интерфейс пропсов (смотри структуру рефа рету) */
 interface Bread {
   title: string;
   to?: string;
@@ -19,6 +29,7 @@ const breadcrumbs = computed(() => {
   return props.useRoutePath ? generateBreads(route.path) : props.breads;
 });
 
+/** разбивать на несколько шагов и функций */
 function generateBreads(path: string): Bread[] {
   const breads: Bread[] = [
     {
@@ -53,6 +64,11 @@ function generateBreads(path: string): Bread[] {
       >
         {{ bread.title }}
       </NuxtLink>
+       
+      <template v-if="index !== breadcrumbs.length - 1">
+        <span>/</span>
+      </template>
+
       <span v-if="index !== breadcrumbs.length - 1">/</span>
 
       <!-- Последний элемент: текст (без ссылки) -->
@@ -65,6 +81,7 @@ function generateBreads(path: string): Bread[] {
 
 <style>
 @reference "tailwindcss";
+
 .bread-crumbs {
   @apply flex;
   @apply flex-row;
@@ -73,6 +90,7 @@ function generateBreads(path: string): Bread[] {
   @apply pt-12;
   @apply pb-6;
 }
+
 .bread-crumb {
   color: var(--Black-Color-600, #5d5d5d);
   font-family: 'Golos Text';

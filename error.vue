@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Top, Heading } from '@/components/header/';
-import { Footer } from './components/footer/';
+import { Top, Heading } from '@/components/header';
+import { Footer } from './components/footer';
 
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';

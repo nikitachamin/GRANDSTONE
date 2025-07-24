@@ -17,6 +17,7 @@ function makeSrcArray(): string[] {
 }
 
 const imgSrc = makeSrcArray();
+
 const swiperOptions = {
   modules: [Navigation, Autoplay],
   slidesPerView: 1,

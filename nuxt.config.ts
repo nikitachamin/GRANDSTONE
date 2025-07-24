@@ -1,11 +1,11 @@
-
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  ssr: true, 
+  ssr: true,
+
   nitro: {
     prerender: {
-      crawlLinks: true, 
+      crawlLinks: true,
       routes: [
         '/o-kompanii',
         '/katalog',
@@ -25,9 +25,10 @@ export default defineNuxtConfig({
         '/oplata',
         '/garantii',
         '/kontakti',
-      ], 
+      ],
     },
   },
+
   css: [
     '@/assets/styles/index.scss',
     'swiper/css',
@@ -42,11 +43,20 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/image', '@nuxt/icon', 'vue-yandex-maps/nuxt',  '@nuxtjs/seo',    ],
+  modules: ['@nuxt/image', '@nuxt/icon', 'vue-yandex-maps/nuxt', '@nuxtjs/seo'],
+
+  components: [
+{
+      path: '~/components',
+      extensions: ['.vue']
+    }
+  ],
+
   yandexMaps: {
     apikey: '1e3650af-24a6-465b-9289-24d5aee887bc',
   },
-   site: { url: 'https://grandstone-memorial.ru/' } ,
+
+  site: { url: 'https://grandstone-memorial.ru/' },
 
   icon: {
     customCollections: [
